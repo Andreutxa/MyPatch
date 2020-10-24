@@ -33,12 +33,12 @@ module.exports.logout = (req, res, next) => {
 module.exports.profile = (req, res, next) => {
   User.findById(req.params.id)
     .populate("reviews")
-    .populate("products")
+    .populate("reminders")
     .populate({
       path: "reviews",
       populate: {
-        path: "product",
-        model: "Product"
+        path: "reminder",
+        model: "Reminder"
       },
     })
     .then((u) => {

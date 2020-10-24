@@ -14,8 +14,11 @@ const reminderSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      required: [true, "Price is required"],
-      enum: ['', 'Medical appointment', 'Gynecologist appointment']
+      required: [true, "Type is required"],
+      enum: ['Take pill', 'Change patch', 'Change ring', 'Take injection', 'Change IUD', 'Change IUS', 'Medical appointment', 'Gynecologist appointment']
+    },
+    date: {
+      type: String,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,

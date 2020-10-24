@@ -6,8 +6,8 @@ module.exports.list = (req, res, next) => {
   Reminder.find()
     .populate("reviews")
     .populate("user")
-    .then((products) => {
-      res.json(products)
+    .then((reminders) => {
+      res.json(reminders)
     })
     .catch((e) => next(e))
 }

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const SALT_WORK_FACTOR = 10;
+const Reminder = require("./Reminder.model");
 
 const userSchema = new mongoose.Schema(
   {
@@ -19,12 +20,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Name is required"],
     },
-    image: String,
+    image: {
+      type: String
+    },
     contraceptionMth: {
       type: String,
       enum: ['Pill', 'Patch', 'Ring', 'Injection', 'IUD', 'IUS'],
       //injection(1 - 3 meses), Pill(todos los días), Patch(semanalmente), Ring(mensual), IUD(5- 10 años), IUS(1-5 años)
       required: [true, "Contraception method is required"],
+    },
+    reminders: {
+      type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Reminder'
+      }],
+      default: []
     },
   },
   {
@@ -73,8 +83,8 @@ userSchema.virtual("reviews", {
   foreignField: 'user'
 });
 
-userSchema.virtual("products", {
-  ref: 'Product',
+userSchema.virtual("reminders", {
+  ref: 'Reminder',
   localField: '_id',
   foreignField: 'user'
 });
