@@ -5,41 +5,25 @@ const baseController = require("../controllers/base.controller")
 const userController = require("../controllers/user.controller")
 const reminderController = require("../controllers/reminder.controller")
 const reviewController = require("../controllers/review.controller")
+const upload = require('../config/cloudinary.config');
 
 module.exports = router
 
-router.get("/", baseController.index)
 
-// Authentication
-router.post("/login", userController.login)
+// ====> LOGIN & AUTHENTICATION
+router.post("/login", userController.login) 
 router.get("/logout", authMiddleware.isAuthenticated, userController.logout)
+router.get('/:id/activate/:token', authMiddleware.isNotAuthenticated, userController.activateUser);
 
-// Users
+// ====> USER
 router.get("/user/:id", authMiddleware.isAuthenticated, userController.profile)
+router.get('/users/:id/edit', authMiddleware.isAuthenticated, userController.edit);
+router.post('/users/:id/edit', authMiddleware.isAuthenticated, upload.single('avatar'), userController.update);
+router.post('/user/new', authMiddleware.isNotAuthenticated, upload.single('avatar'), userController.createUser);
 
-// Products
-router.get("/product", authMiddleware.isAuthenticated, reminderController.list)
-
-router.post(
-  "/product",
-  authMiddleware.isAuthenticated,
-  reminderController.create
-)
-
-router.get('/product/:id', authMiddleware.isAuthenticated, reminderController.single)
-
-router.patch(
-  "/product/:id/edit",
-  authMiddleware.isAuthenticated,
-  reminderController.edit
-)
-
-router.delete(
-  "/product/:id",
-  authMiddleware.isAuthenticated,
-  reminderController.delete
-)
-
-// Reviews
-router.post("/product/:id/review", authMiddleware.isAuthenticated, reviewController.createReview)
-router.delete("/review/:id", authMiddleware.isAuthenticated, reviewController.deleteReview)
+// ====> REMINDERS
+router.get("/reminders", authMiddleware.isAuthenticated, reminderController.getReminders)
+router.post("/reminder", authMiddleware.isAuthenticated, reminderController.create)
+router.get('/reminder/:id', authMiddleware.isAuthenticated, reminderController.single)
+router.delete("/reminder/:id/delete", authMiddleware.isAuthenticated, reminderController.delete)
+router.patch("/reminder/:id/edit", authMiddleware.isAuthenticated, reminderController.edit)

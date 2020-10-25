@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/api-amazhack'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mypatch-api'
 
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true})
     .then(() => console.info(`Successfully connected to the database ${MONGODB_URI}`))

@@ -42,8 +42,6 @@ const reminderSchema = new mongoose.Schema(
   }
 );
 
-
-
 reminderSchema.virtual("reviews", {
   ref: "Review",
   localField: "_id",
