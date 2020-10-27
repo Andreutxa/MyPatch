@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
 const authMiddleware = require("../middlewares/auth.middleware")
-const baseController = require("../controllers/base.controller")
 const userController = require("../controllers/user.controller")
 const reminderController = require("../controllers/reminder.controller")
 const reviewController = require("../controllers/review.controller")
@@ -23,7 +22,7 @@ router.post('/user/new', authMiddleware.isNotAuthenticated, upload.single('avata
 
 // ====> REMINDERS
 router.get("/reminders", authMiddleware.isAuthenticated, reminderController.getReminders)
-router.post("/reminder", authMiddleware.isAuthenticated, reminderController.create)
+router.post("/reminder/new", authMiddleware.isAuthenticated, reminderController.create)
 router.get('/reminder/:id', authMiddleware.isAuthenticated, reminderController.single)
 router.delete("/reminder/:id/delete", authMiddleware.isAuthenticated, reminderController.delete)
 router.patch("/reminder/:id/edit", authMiddleware.isAuthenticated, reminderController.edit)

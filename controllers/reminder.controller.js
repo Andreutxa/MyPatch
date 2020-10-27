@@ -1,5 +1,5 @@
 const Reminder = require("../models/Reminder.model")
-const Review = require("../models/Review.model")
+// const Review = require("../models/Review.model")
 const createError = require("http-errors")
 
 module.exports.getReminders = (req, res, next) => {

@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { getMaxListeners } = require("process");
 const nodemailer = require('nodemailer');
-const host = process.env.HOST || 'http://localhost:3000';
+const host = process.env.HOST || 'http://localhost:3007';
 const user = process.env.NM_USER;
 
 const transport = nodemailer.createTransport(
