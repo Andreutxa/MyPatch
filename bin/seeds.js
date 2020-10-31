@@ -21,7 +21,8 @@ Promise.all([User.deleteMany(), Reminder.deleteMany()])
         period: '24/10/2020',
         durationPeriod: 5,
         contraceptionMth: 'Patch',
-        avatar: faker.image.avatar()
+        avatar: faker.image.avatar(),
+        activation: true
       });
       user
         .save()

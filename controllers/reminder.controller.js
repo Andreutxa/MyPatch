@@ -40,7 +40,7 @@ module.exports.create = (req, res, next) => {
 // }
 
 module.exports.edit = (req, res, next) => {
-
+  console.log('REQ.BODY', req.body);
   Reminder.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true, new: true })
       .then(reminder => {
           res.status(201).json(reminder)
