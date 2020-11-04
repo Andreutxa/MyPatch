@@ -10,12 +10,12 @@ const reminderSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: [true, "Description is required"],
+      // required: [true, "Description is required"],
     },
     type: {
       type: String,
       required: [true, "Type is required"],
-      enum: ['Take pill', 'Change patch', 'Change ring', 'Take injection', 'Change IUD', 'Change IUS', 'Medical appointment', 'Gynecologist appointment']
+      enum: ['Period', 'Take pill', 'Change patch', 'Change ring', 'Take injection', 'Change IUD', 'Change IUS', 'Medical appointment', 'Gynecologist appointment']
     },
     date: {
       type: String,

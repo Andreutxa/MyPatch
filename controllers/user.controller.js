@@ -123,13 +123,14 @@ module.exports.update = (req, res, next) => {
   const body = req.body
 
   if (req.file) {
+    console.log(req.file);
     body.avatar = req.file.path
   }
 
   User.findByIdAndUpdate(req.params.id, body, { runValidators: true, new: true })
     .then(user => {
       if (user) {
-        res.json({message: 'User updated successfully'})
+        res.status(200).json(user)
       } else {
         throw createError(400, 'User not updated');
       }
