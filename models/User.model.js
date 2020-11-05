@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const SALT_WORK_FACTOR = 10;
 const Reminder = require("./Reminder.model");
+const Period = require("./Period.model");
 const generateRandomToken = () => {
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let token = '';
@@ -123,6 +124,12 @@ userSchema.virtual("reviews", {
 
 userSchema.virtual("reminders", {
   ref: 'Reminder',
+  localField: '_id',
+  foreignField: 'user'
+});
+
+userSchema.virtual("allPeriods", {
+  ref: 'Period',
   localField: '_id',
   foreignField: 'user'
 });

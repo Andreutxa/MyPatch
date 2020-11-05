@@ -1,6 +1,7 @@
 const createError = require("http-errors")
 const User = require("../models/User.model")
 const Reminder = require("../models/Reminder.model")
+const Period = require("../models/Period.model")
 const mongoose = require('mongoose');
 const mailer = require('../config/mailer.config');
 
@@ -91,9 +92,10 @@ module.exports.logout = (req, res, next) => {
 }
 
 module.exports.profile = (req, res, next) => {
-  User.findById(req.params.id)
+  User.findById(req.session.user.id)
     // .populate("reviews")
     .populate("reminders")
+    .populate("allPeriods")
     // .populate({
     //   path: "reviews",
     //   populate: {
