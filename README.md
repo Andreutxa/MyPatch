@@ -8,7 +8,7 @@ _Proyecto final del módulo 3 en el curso intensivo Web Development de Iron Hack
 * Ejecuta **npm run seeds**
 * Clona el repo del front ➡️ [MyPatch - front](https://github.com/Andreutxa/MyPatch-react)
 * Realiza en ambos archivos las instalaciones ejecutando **npm install**
-* Ejecuta en ambos archivos **npm start*
+* Ejecuta en ambos archivos **npm start**
 
 * Echale un vistazo aquí! ➡️ [MyPatch](https://andreutxa.github.io/AVATAR-The-last-Airbender-Videogame/)
 
