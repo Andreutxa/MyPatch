@@ -5,7 +5,7 @@ _Proyecto final del módulo 3 en el curso intensivo Web Development de Iron Hack
 ## Instrucciones 🚀
 
 * Para verlo clona el repo
-* Ejecuta **npm run seeds*
+* Ejecuta **npm run seeds**
 * Clona el repo del front ➡️ [MyPatch - front](https://github.com/Andreutxa/MyPatch-react)
 * Realiza en ambos archivos las instalaciones ejecutando **npm install**
 * Ejecuta en ambos archivos **npm start*
