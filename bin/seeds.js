@@ -2,13 +2,10 @@ require("dotenv").config();
 require("../config/db.config");
 const User = require("../models/User.model");
 const Reminder = require("../models/Reminder.model");
-// const Review = require("../models/Review.model");
 const faker = require("faker");
 
 const userIds = [];
-// const userN = 30;
 const reminderN = 5;
-// const reviewN = 5;
 
 Promise.all([User.deleteMany(), Reminder.deleteMany()])
   .then(() => {

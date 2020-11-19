@@ -1,5 +1,4 @@
 const Product = require("../models/Reminder.model")
-// const Review = require("../models/Review.model")
 const createError = require("http-errors")
 
 module.exports.createReview = (req, res, next) => {

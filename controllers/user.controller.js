@@ -93,16 +93,8 @@ module.exports.logout = (req, res, next) => {
 
 module.exports.profile = (req, res, next) => {
   User.findById(req.session.user.id)
-    // .populate("reviews")
     .populate("reminders")
     .populate("allPeriods")
-    // .populate({
-    //   path: "reviews",
-    //   populate: {
-    //     path: "reminder",
-    //     model: "Reminder"
-    //   },
-    // })
     .then((user) => {
 			if (user) {
 				res.json(user);

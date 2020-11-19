@@ -68,13 +68,6 @@ const userSchema = new mongoose.Schema(
       //injection(1 - 3 meses), Pill(todos los días), Patch(semanalmente), Ring(mensual), IUD(5- 10 años), IUS(1-5 años)
       required: [true, "Contraception method is required"],
     }
-    // reminders: {
-    //   type: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Reminder'
-    //   }],
-    //   default: []
-    // },
   },
   {
     timestamps: true,

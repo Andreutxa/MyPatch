@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const User = require("./User.model");
-// const Review = require("./Review.model");
 
 const reminderSchema = new mongoose.Schema(
   {
